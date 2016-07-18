@@ -17,16 +17,16 @@ def index():
     """Serve the client-side application."""
     return render_template('index.html')
 
-@sio.on('connect', namespace='/chat')
+@sio.on('connect')
 def connect(sid, environ):
     print("connect ", sid)
 
-@sio.on('chat message', namespace='/chat')
+@sio.on('chat message')
 def message(sid, data):
     print("message ", data)
     sio.emit('reply', room=sid)
 
-@sio.on('disconnect', namespace='/chat')
+@sio.on('disconnect')
 def disconnect(sid):
     print('disconnect ', sid)
 
