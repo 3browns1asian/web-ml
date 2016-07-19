@@ -182,9 +182,7 @@ def connect(sid, environ):
 
 @sio.on('chat message')
 def message(sid, data):
-#    print("message ", data)
-#    sio.emit('reply', room=sid)
-    
+    global build_data   
     splits = data.split('\n')
     for line in splits:
         if line != "END":
