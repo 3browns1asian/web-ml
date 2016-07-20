@@ -156,8 +156,8 @@ def process_data(data):
                       float(right_array[6]), float(right_array[7]),
                       float(right_array[8]), float(right_array[9]), float(right_array[10])]
                       
-        values["left"].append(left_value)
-        values["right"].append(right_value)
+        values["left"].append([left_value])
+        values["right"].append([right_value])
         
     final_data.append({"values": values})
     
