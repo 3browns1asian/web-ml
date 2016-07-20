@@ -20,6 +20,9 @@ def mad(data, axis=None):
 def feature_extraction(data, train=False):
     new_data = []
     
+    print("Data")
+    print(data)
+    
     for f_data in data:
         
         left_vals = np.array([val for val in f_data["values"]["left"]])
