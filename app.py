@@ -25,8 +25,8 @@ def feature_extraction(data, train=False):
     
     for f_data in data:
         
-        left_vals = np.array(f_data["values"]["left"])
-        right_vals = np.array(f_data["values"]["right"])
+        left_vals = np.array([f_data["values"]["left"]])
+        right_vals = np.array([f_data["values"]["right"]])
         
 
         for y in range(len(left_vals)):
