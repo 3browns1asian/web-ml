@@ -7,6 +7,7 @@ Created on Mon Jul 18 16:13:51 2016
 import os
 import socketio
 import eventlet
+import sklearn
 from flask import Flask, render_template
 from sklearn.externals import joblib
 import numpy as np
@@ -186,13 +187,13 @@ def message(sid, data):
     splits = data.split('\n')
     for line in splits:
         if line != "END":
-            print 'Found END of the data.'
+            print 'Appended a line to the data.'
             build_data.append(line)
             sio.emit('receivedSensorData')
         else:
             value = process_data(build_data)
             build_data = []
-            print 'Appended a line to the data.'
+            print 'Found END of the data.'
             sio.emit('predictedValue', sign=value)
 
 @sio.on('disconnect')
