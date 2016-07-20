@@ -186,12 +186,13 @@ def message(sid, data):
     splits = data.split('\n')
     for line in splits:
         if line != "END":
-            print 
+            print 'Found END of the data.'
             build_data.append(line)
             sio.emit('receivedSensorData')
         else:
             value = process_data(build_data)
             build_data = []
+            print 'Appended a line to the data.'
             sio.emit('predictedValue', sign=value)
 
 @sio.on('disconnect')
