@@ -180,18 +180,19 @@ def index():
 def connect(sid, environ):
     print("connect ", sid)
 
-@sio.on('chat message')
+@sio.on('sendSensorData')
 def message(sid, data):
     global build_data   
     splits = data.split('\n')
     for line in splits:
         if line != "END":
+            print 
             build_data.append(line)
+            sio.emit('receivedSensorData')
         else:
             value = process_data(build_data)
             build_data = []
-            
-            sio.emit('reply', sign=value)
+            sio.emit('predictedValue', sign=value)
 
 @sio.on('disconnect')
 def disconnect(sid):
