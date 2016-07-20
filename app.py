@@ -189,7 +189,7 @@ def message(sid, data):
         if line != "END":
             print 'Appended a line to the data.'
             build_data.append(line)
-            sio.emit('receivedSensorData')
+            sio.emit('receivedSensorData', data)
         else:
             value = process_data(build_data)
             build_data = []
