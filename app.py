@@ -194,7 +194,7 @@ def message(sid, data):
             value = process_data(build_data)
             build_data = []
             print 'Found END of the data.'
-            sio.emit('predictedValue', sign=value)
+            sio.emit('predictedValue', value)
 
 @sio.on('disconnect')
 def disconnect(sid):
