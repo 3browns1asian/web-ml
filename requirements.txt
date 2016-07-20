@@ -1,6 +1,7 @@
 numpy==1.9.2
 scipy==0.15.1
 scikit-learn
+pandas
 flask
 python-socketio==1.4.2
 eventlet
