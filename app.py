@@ -5,7 +5,6 @@ Created on Mon Jul 18 16:13:51 2016
 @author: akshaybudhkar
 """
 import os
-import eventlet
 import sklearn
 from flask import Flask, render_template
 from flask_socketio import SocketIO
