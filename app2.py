@@ -11,5 +11,4 @@ def connect_handler():
 	socketio.emit('you\'re connected')
 
 if __name__ == '__main__':
-	port = int(os.environ.get("PORT", 5000))
-	socketio.run(app, None, port)
+	socketio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
