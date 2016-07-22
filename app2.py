@@ -12,4 +12,4 @@ def connect_handler():
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
-	socketio.run(app, 'https://afternoon-lowlands-52437.herokuapp.com', port)
+	socketio.run(app, '129.97.124.199', port)
