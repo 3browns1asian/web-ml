@@ -177,11 +177,11 @@ def index():
     return render_template('index.html')
 
 @sio.on('connect')
-def connect(sid, environ):
-    print("connect ", sid)
+def connect():
+    print('A user has connected.')
 
 @sio.on('sendSensorData')
-def message(sid, data):
+def message(data):
     global build_data   
     splits = data.split('\n')
     for line in splits:
@@ -196,8 +196,8 @@ def message(sid, data):
             sio.emit('predictedValue', value)
 
 @sio.on('disconnect')
-def disconnect(sid):
-    print('disconnect ', sid)
+def disconnect():
+    print('A user has disconnected')
 
 if __name__ == '__main__':
     sio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
