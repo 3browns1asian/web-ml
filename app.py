@@ -31,6 +31,8 @@ def feature_extraction(data, train=False):
             a = np.array(left_vals[y])
             b = np.array(right_vals[y])
             
+            print(a)
+            
             # Left hand features
             if len(a) != 0 and len(a[0]) != 0:
                 # Feature 1: Mean of DCT of Acceleration of X
