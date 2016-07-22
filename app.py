@@ -5,10 +5,10 @@ Created on Mon Jul 18 16:13:51 2016
 @author: akshaybudhkar
 """
 import os
-import socketio
 import eventlet
 import sklearn
 from flask import Flask, render_template
+from flask_socketio import SocketIO
 from sklearn.externals import joblib
 import numpy as np
 import pandas as pd
@@ -169,8 +169,8 @@ def process_data(data):
     return cols[preds_nb]
 
 build_data = []    
-sio = socketio.Server()
 app = Flask(__name__)
+sio = SocketIO(app)
 
 @app.route('/')
 def index():
@@ -201,9 +201,4 @@ def disconnect(sid):
     print('disconnect ', sid)
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))    
-    # wrap Flask application with engineio's middleware
-    app = socketio.Middleware(sio, app)
-
-    # deploy as an eventlet WSGI server
-    eventlet.wsgi.server(eventlet.listen(('', port)), app)
+    sio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
