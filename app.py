@@ -164,6 +164,9 @@ def process_data(data):
     preds_nb = clf_1.predict(X_pred)
     
     cols = joblib.load('ml-models/col.pkl')
+
+    print(cols)
+    print(preds_nb)
     
     return cols[preds_nb]
 
