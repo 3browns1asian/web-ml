@@ -160,14 +160,14 @@ def process_data(data):
     predict_df = pd.DataFrame(predict_data)
     X_pred = np.array(predict_df.features.tolist())
     
-    clf_1 = joblib.load('ml-models/svm.pkl')
+    clf_1 = joblib.load('ml-models/bayes.pkl')
     preds_nb = clf_1.predict(X_pred)
     
     cols = joblib.load('ml-models/col.pkl')
 
     print(cols)
     print(preds_nb)
-    
+
     return cols[preds_nb]
 
 build_data = []    
