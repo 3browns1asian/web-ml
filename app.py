@@ -160,7 +160,7 @@ def process_data(data):
     predict_df = pd.DataFrame(predict_data)
     X_pred = np.array(predict_df.features.tolist())
     
-    clf_1 = joblib.load('ml-models/svm.pkl')
+    clf_1 = joblib.load('ml-models/decision_tree.pkl')
     preds_nb = clf_1.predict(X_pred)
     
     cols = joblib.load('ml-models/col.pkl')
