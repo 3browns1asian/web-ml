@@ -1,4 +1,4 @@
--e git@github.com:tensorflow/tensorflow.git
+-e git+git://github.com/tensorflow/tensorflow.git
 pandas
 flask-socketio
 python-socketio==1.4.2
