@@ -1,7 +1,4 @@
 git+git://github.com/tensorflow/tensorflow.git
-numpy==1.9.1
-scipy==0.14.0
-scikit-learn==0.15.2
 pandas
 flask-socketio
 python-socketio==1.4.2
