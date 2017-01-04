@@ -6,3 +6,4 @@ flask-socketio
 python-socketio==1.4.2
 eventlet
 gunicorn
+tensorflow
