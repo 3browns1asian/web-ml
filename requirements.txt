@@ -5,5 +5,5 @@ eventlet
 gunicorn
 Https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
 tflearn
-scipy
-scikit-learn
+scipy==0.14.0
+scikit-learn==0.15.2
