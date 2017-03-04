@@ -167,15 +167,16 @@ def process_data(data):
     print predict_data
     print X_pred
     print "Reached here"
-    clf_1 = joblib.load('ml-models/svm.pkl')
-    preds_nb = clf_1.predict(X_pred)
-    
-    cols = joblib.load('ml-models/col.pkl')
+    # clf_1 = joblib.load('ml-models/svm.pkl')
+    # preds_nb = clf_1.predict(X_pred)
+    #
+    # cols = joblib.load('ml-models/col.pkl')
+    #
+    # print(cols)
+    # print(preds_nb)
 
-    print(cols)
-    print(preds_nb)
-
-    return cols[preds_nb]
+    # return cols[preds_nb]
+    return "Hello"
 
 build_data = []    
 app = Flask(__name__)
