@@ -167,7 +167,7 @@ def process_data(data):
     print predict_data
     print X_pred
     print "Reached here"
-    clf_1 = joblib.load('ml-models/svm.pkl')
+    clf_1 = joblib.load('ml-models/decision_tree.pkl')
     preds_nb = clf_1.predict(X_pred)
 
     cols = joblib.load('ml-models/col.pkl')
