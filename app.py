@@ -144,7 +144,7 @@ def process_data(data):
     print(data)
     
     for point in data:
-        sp  lits = point.split("|")
+        splits = point.split("|")
         print "splitting"
         print splits
         left_array = splits[0].split(",")
