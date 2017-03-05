@@ -35,20 +35,20 @@ def feature_extraction(data, train=False):
             # Feature 1: Mean of DCT of Acceleration of X
             transformed_values_x = np.array(dct(a[:, 0]))
             features.append(round(np.mean(transformed_values_x), 3))
-            features.append(round(np.amax(transformed_values_x), 3))
-            features.append(round(np.amin(transformed_values_x), 3))
+            features.append(round(np.amax(a[:, 0])))
+            features.append(round(np.amin(a[:, 0])))
 
             # Feature 2: Mean of DCT of Acceleration of Y
             transformed_values_y = np.array(dct(a[:, 1]))
             features.append(round(np.mean(transformed_values_y), 3))
-            features.append(round(np.amax(transformed_values_y), 3))
-            features.append(round(np.amin(transformed_values_y), 3))
+            features.append(round(np.amax(a[:, 1])))
+            features.append(round(np.amin(a[:, 1])))
 
             # Feature 3: Mean of DCT of Acceleration of Z
             transformed_values_z = np.array(dct(a[:, 2]))
             features.append(round(np.mean(transformed_values_z), 3))
-            features.append(round(np.amax(transformed_values_z), 3))
-            features.append(round(np.amin(transformed_values_z), 3))
+            features.append(round(np.amax(a[:, 2])))
+            features.append(round(np.amin(a[:, 2])))
 
             # Feature 4/5: Mean Absolute Deviation and Mean of gyro in X
             features.append(round(mad(a[:, 3])))
@@ -144,7 +144,7 @@ def process_data(data):
     print(data)
     
     for point in data:
-        splits = point.split("|")
+        sp  lits = point.split("|")
         print "splitting"
         print splits
         left_array = splits[0].split(",")
