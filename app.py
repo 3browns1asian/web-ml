@@ -35,17 +35,20 @@ def feature_extraction(data, train=False):
             # Feature 1: Mean of DCT of Acceleration of X
             transformed_values_x = np.array(dct(a[:, 0]))
             features.append(round(np.mean(transformed_values_x), 3))
-            features.append(round(np.mean(transformed_values_x), 3))
+            features.append(round(np.amax(transformed_values_x), 3))
+            features.append(round(np.amin(transformed_values_x), 3))
 
             # Feature 2: Mean of DCT of Acceleration of Y
             transformed_values_y = np.array(dct(a[:, 1]))
             features.append(round(np.mean(transformed_values_y), 3))
-            features.append(round(np.mean(transformed_values_y), 3))
+            features.append(round(np.amax(transformed_values_y), 3))
+            features.append(round(np.amin(transformed_values_y), 3))
 
             # Feature 3: Mean of DCT of Acceleration of Z
             transformed_values_z = np.array(dct(a[:, 2]))
             features.append(round(np.mean(transformed_values_z), 3))
-            features.append(round(np.mean(transformed_values_z), 3))
+            features.append(round(np.amax(transformed_values_z), 3))
+            features.append(round(np.amin(transformed_values_z), 3))
 
             # Feature 4/5: Mean Absolute Deviation and Mean of gyro in X
             features.append(round(mad(a[:, 3])))
@@ -127,7 +130,7 @@ def feature_extraction(data, train=False):
                 
             if len(features) > 0:
                 if train:
-                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:22]})
+                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:25]})
                 else:
                     new_data.append({"features": features[:22]})
     
