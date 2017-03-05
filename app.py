@@ -53,14 +53,20 @@ def feature_extraction(data, train=False):
             # Feature 4/5: Mean Absolute Deviation and Mean of gyro in X
             features.append(round(mad(a[:, 3])))
             features.append(round(np.mean(a[:, 3])))
+            features.append(round(np.amax(a[:, 3])))
+            features.append(round(np.amin(a[:, 3])))
             
             # Feature 6/7: Mean Absolute Deviation and Mean of gyro in Y
             features.append(round(mad(a[:, 4])))
             features.append(round(np.mean(a[:, 4])))
+            features.append(round(np.amax(a[:, 4])))
+            features.append(round(np.amin(a[:, 4])))
             
             # Feature 8/9: Mean Absolute Deviation and Mean of gyro in Z
             features.append(round(mad(a[:, 5])))
             features.append(round(np.mean(a[:, 5])))
+            features.append(round(np.amax(a[:, 5])))
+            features.append(round(np.amin(a[:, 5])))
             
             # Feature 10/11: Standard Absolute Deviation and Mean of flex 1
             features.append(round(np.std(a[:, 6])))
@@ -130,9 +136,9 @@ def feature_extraction(data, train=False):
                 
             if len(features) > 0:
                 if train:
-                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:25]})
+                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:31]})
                 else:
-                    new_data.append({"features": features[:25]})
+                    new_data.append({"features": features[:31]})
     
     return new_data
 
