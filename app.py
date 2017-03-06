@@ -136,9 +136,9 @@ def feature_extraction(data, train=False):
                 
             if len(features) > 0:
                 if train:
-                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:31]})
+                    new_data.append({"label": f_data["label"], "user": f_data["user"], "features": features[:32]})
                 else:
-                    new_data.append({"features": features[:31]})
+                    new_data.append({"features": features[:32]})
     
     return new_data
 
