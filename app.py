@@ -34,33 +34,39 @@ def feature_extraction(data, train=False):
         if len(a) != 0 and len(a[0]) != 0:
             # Feature 1: Mean of DCT of Acceleration of X
             transformed_values_x = np.array(dct(a[:, 0]))
-            features.append(round(np.mean(transformed_values_x), 3))
+            features.append(round(np.mean(a[:, 0]), 3))
+            # features.append(round(skew(a[:, 0]), 3))
 
             # Feature 2: Mean of DCT of Acceleration of Y
             transformed_values_y = np.array(dct(a[:, 1]))
-            features.append(round(np.mean(transformed_values_y), 3))
+            features.append(round(np.mean(a[:, 1]), 3))
+            # features.append(round(skew(a[:, 1]), 3))
 
             # Feature 3: Mean of DCT of Acceleration of Z
             transformed_values_z = np.array(dct(a[:, 2]))
-            features.append(round(np.mean(transformed_values_z), 3))
+            features.append(round(np.mean(a[:, 2]), 3))
+            # features.append(round(skew(a[:, 2]), 3))
 
             # Feature 4/5: Mean Absolute Deviation and Mean of gyro in X
             features.append(round(mad(a[:, 3]), 3))
             features.append(round(np.mean(a[:, 3]), 3))
             features.append(round(np.amax(a[:, 3]), 3))
             features.append(round(np.amin(a[:, 3]), 3))
+            # features.append(round(np.var(a[:, 3]), 3))
 
             # Feature 6/7: Mean Absolute Deviation and Mean of gyro in Y
             features.append(round(mad(a[:, 4]), 3))
             features.append(round(np.mean(a[:, 4]), 3))
             features.append(round(np.amax(a[:, 4]), 3))
             features.append(round(np.amin(a[:, 4]), 3))
+            # features.append(round(np.var(a[:, 4]), 3))
 
             # Feature 8/9: Mean Absolute Deviation and Mean of gyro in Z
             features.append(round(mad(a[:, 5]), 3))
             features.append(round(np.mean(a[:, 5]), 3))
             features.append(round(np.amax(a[:, 5]), 3))
             features.append(round(np.amin(a[:, 5]), 3))
+            # features.append(round(np.var(a[:, 5]), 3))
 
             # Feature 10/11: Standard Absolute Deviation and Mean of flex 1
             features.append(round(np.std(a[:, 6])))
@@ -174,10 +180,10 @@ def process_data(data):
     print predict_data
     print X_pred
     print "Reached here"
-    clf_1 = joblib.load('ml-models/svm_minus.pkl')
+    clf_1 = joblib.load('ml-models/svm_plus.pkl')
     preds_nb = clf_1.predict(X_pred)
 
-    cols = joblib.load('ml-models/col_minus.pkl')
+    cols = joblib.load('ml-models/col_plus.pkl')
 
     print(cols)
     print(preds_nb)
