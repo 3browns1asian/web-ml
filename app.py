@@ -14,6 +14,7 @@ import pandas as pd
 from scipy.fftpack import dct
 import tensorflow as tf
 
+
 def mad(data, axis=None):
     return np.mean(np.absolute(data - np.mean(data, axis)), axis)
 
