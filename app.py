@@ -159,7 +159,7 @@ def process_data(data):
         right_array = splits[1].split(",")
         
         left_value = [float(left_array[0]), float(left_array[1]), float(left_array[2]),
-                      float(left_array[3]) - 0.03, float(left_array[4]), float(left_array[5]) + 0.04,
+                      float(left_array[3]), float(left_array[4]), float(left_array[5]),
                       float(left_array[6]), float(left_array[7]),
                       float(left_array[8]), float(left_array[9]), float(left_array[10])]
                       
