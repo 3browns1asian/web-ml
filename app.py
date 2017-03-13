@@ -14,7 +14,6 @@ import pandas as pd
 from scipy.fftpack import dct
 import tensorflow as tf
 
-
 def mad(data, axis=None):
     return np.mean(np.absolute(data - np.mean(data, axis)), axis)
 
@@ -186,7 +185,7 @@ def process_data(data):
     print predict_data
     print X_pred
     print "Reached here"
-    clf_1 = joblib.load('ml-models/svm_plus.pkl')
+    clf_1 = joblib.load('ml-models/logistic_regression.pkl')
     preds_nb = clf_1.predict(X_pred)
 
     cols = joblib.load('ml-models/col_plus.pkl')
