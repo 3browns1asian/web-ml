@@ -150,7 +150,7 @@ def feature_extraction(data, train=False):
     return new_data
 
 
-def process_data(data):
+def process_data(data, lang):
     final_data = []
     
     values = {"left": [], "right": []}
@@ -187,19 +187,28 @@ def process_data(data):
     print predict_data
     print X_pred
     print "Reached here"
-    clf_1 = joblib.load('ml-models/svm_plus.pkl')
-    preds_nb = clf_1.predict(X_pred)
+    if lang == "ASL":
+        clf_1 = joblib.load('ml-models/svm_plus.pkl')
+        preds_nb = clf_1.predict(X_pred)
+        cols = joblib.load('ml-models/col_plus.pkl')
+        print(cols)
+        print(preds_nb)
 
-    cols = joblib.load('ml-models/col_plus.pkl')
+        return cols[preds_nb]
+    else:
+        #Change this here to use JSL models
+        clf_1 = joblib.load('ml-models/svm_plus.pkl')
+        preds_nb = clf_1.predict(X_pred)
+        cols = joblib.load('ml-models/col_plus.pkl')
+        print(cols)
+        print(preds_nb)
 
-    print(cols)
-    print(preds_nb)
-
-    return cols[preds_nb]
+        return cols[preds_nb]        
 
 build_data = []    
 app = Flask(__name__)
 sio = SocketIO(app)
+language = "ASL"
 
 @app.route('/')
 def index():
@@ -209,6 +218,14 @@ def index():
 @sio.on('connect')
 def connect():
     print('A user has connected.')
+
+@sio.on('languageChange')
+def switchLanguage(lang):
+    global language
+    if lang == "ASL":
+        language = "ASL"
+    else if lang == "JSL":
+        language = "JSL"
 
 @sio.on('sendSensorData')
 def message(data):
@@ -220,7 +237,7 @@ def message(data):
             build_data.append(line)
             sio.emit('receivedSensorData', data)
         else:
-            value = process_data(build_data)
+            value = process_data(build_data, language)
             build_data = []
             print 'Found END of the data.'
             sio.emit('predictedValue', value)
