@@ -197,9 +197,10 @@ def process_data(data, lang):
         return cols[preds_nb]
     else:
         #Change this here to use JSL models
-        clf_1 = joblib.load('ml-models/svm_plus_jsl.pkl')
-        preds_nb = clf_1.predict(X_pred)
+        clf_2 = joblib.load('ml-models/svm_plus_jsl.pkl')
+        preds_nb = clf_2.predict(X_pred)
         cols = joblib.load('ml-models/col_plus_jsl.pkl')
+        print "JSL"
         print(cols)
         print(preds_nb)
 
