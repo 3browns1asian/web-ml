@@ -219,12 +219,13 @@ def index():
 def connect():
     print('A user has connected.')
 
+
 @sio.on('languageChange')
 def switchLanguage(lang):
     global language
     if lang == "ASL":
         language = "ASL"
-    else if lang == "JSL":
+    elif lang == "JSL":
         language = "JSL"
 
 @sio.on('sendSensorData')
