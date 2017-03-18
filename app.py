@@ -188,9 +188,9 @@ def process_data(data, lang):
     print X_pred
     print "Reached here"
     if lang == "ASL":
-        clf_1 = joblib.load('ml-models/svm_plus.pkl')
+        clf_1 = joblib.load('ml-models/svm_minus_it.pkl')
         preds_nb = clf_1.predict(X_pred)
-        cols = joblib.load('ml-models/col_plus.pkl')
+        cols = joblib.load('ml-models/col_minus_it.pkl')
         print(cols)
         print(preds_nb)
 
