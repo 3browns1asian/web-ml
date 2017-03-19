@@ -28,8 +28,7 @@ def feature_extraction(data, train=False):
         
         a = left_vals
         b = right_vals
-        features = []            
-        
+        features = []
         # Left hand features
         if len(a) != 0 and len(a[0]) != 0:
             lengt = len(a[:, 0])
